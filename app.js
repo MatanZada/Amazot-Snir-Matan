@@ -46,7 +46,12 @@ app.get("/", (req, res) => {
 });
 
 app.post("/insertBooks", (req, res) => {
-  const { name, publishDate, author, isInStock } = req.body;
+  const {
+    name,
+    publishDate,
+    author,
+    isInStock
+  } = req.body;
   insertBooks(name, publishDate, author, isInStock)
     .then((books) => res.json(books))
     .catch((err) => res.json(err));
@@ -65,7 +70,12 @@ app.get("/books/:bookId", (req, res) => {
 });
 
 app.put("/books/:bookId", async (req, res) => {
-  const { name, publishDate, author, isInStock } = req.body;
+  const {
+    name,
+    publishDate,
+    author,
+    isInStock
+  } = req.body;
   findByIdAndUpdate(req.body, name, publishDate, author, isInStock)
     .then((books) => res.json(books))
     .catch((err) => res.json(err));
@@ -78,7 +88,13 @@ app.delete("/book/:bookId", (req, res) => {
 });
 
 app.post("/insertAuthor", (req, res) => {
-  const { name, adress, phone, isAlive, birthday } = req.body;
+  const {
+    name,
+    adress,
+    phone,
+    isAlive,
+    birthday
+  } = req.body;
   insertAuthor(req.body, name, adress, phone, isAlive, birthday)
     .then((authors) => res.json(authors))
     .catch((err) => res.json(err));
@@ -97,7 +113,13 @@ app.get("/author/:authorId", (req, res) => {
 });
 
 app.put("/author/:authorId", async (req, res) => {
-  const { name, adress, phone, isAlive, birthday } = req.body;
+  const {
+    name,
+    adress,
+    phone,
+    isAlive,
+    birthday
+  } = req.body;
   findByIdAndUpdate(req.body, name, publishDate, author, isInStock)
     .then((authors) => res.json(authors))
     .catch((err) => res.json(err));

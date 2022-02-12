@@ -6,9 +6,7 @@ $(function () {
       author: $("[data-role='authorInput']").val(),
       isInStock: $("[data-role='inStock']").prop("checked"),
     };
-    $.post(
-      "/insertBooks",
-      {
+    $.post("/insertBooks", data, {
         data,
       },
       function () {
@@ -21,8 +19,11 @@ $(function () {
 
   $('[data-role="sendBtn"]').click(function () {
     $.ajax({
-      url: "/books",
-      type: "GET",
+      url: '/books',
+      type: 'GET',
+      data: {
+        'numberOfWords': 10
+      },
       success: function (result) {
         console.log(result);
         document.getElementById("getAllBooks").textContent = JSON.stringify(
@@ -35,16 +36,15 @@ $(function () {
   });
 
   $('[data-role="sendBtn"]').click(function () {
-    let bookId = $('[data-role="bookInput]').val();
     $.ajax({
-      url: "/books/:bookId",
-      method: "get",
+      url: '/author/:authorId',
+      type: 'GET',
       data: {
-        _id: bookId,
+        'numberOfWords': 10
       },
       success: function (result) {
         console.log(result);
-        document.getElementById("findById").textContent = JSON.stringify(
+        document.getElementById("getAllBooks").textContent = JSON.stringify(
           result,
           undefined,
           2
